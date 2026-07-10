@@ -2,31 +2,27 @@
 
 An edge safety system deploying deterministic ML fall-detection models directly on ESP32 microcontrollers with a memory footprint under 128KB. Features event-driven C++ firmware that prioritizes alert transmission packets over telemetry updates during latency-critical hazard events.
 
-## 🚀 Key Features
-- **Technical Excellence:** Recruiter-grade implementation designed with clean architectures.
-- **Metrics Driven:** Optimized workflows and proven performance parameters.
-- **Robust Integration:** Uses modern libraries and components.
+## Features
+- Real-time fall classification running on ESP32 microcontrollers (<128KB memory footprint).
+- Event-driven firmware prioritizing safety alert packets over standard sensor telemetry during critical events.
+- Multi-sensor data acquisition (accelerometer, gyroscope) processed on-chip.
 
-## 🛠️ Technology Stack
-- **ESP32**
-- **C++**
-- **Edge ML**
-- **Sensors**
-- **MATLAB**
-- **Simulink**
+## Tech Stack
+- ESP32
+- C++
+- Edge ML
+- Sensors
+- MATLAB
+- Simulink
 
-## 💻 Getting Started / Setup
-To run this project locally, clone this repository and follow the instructions below:
+## Getting Started
+To configure and run the project locally, clone the repository and execute the setup instructions:
 
 ```bash
-# Clone the repository
 git clone https://github.com/Raghuram-sekar/Mine-Safety-Edge-AI.git
 cd Mine-Safety-Edge-AI
 
-# Execute setup steps
+# Execute local setup commands:
 # Open project in Arduino IDE or PlatformIO
 # Compile and upload to ESP32 board
 ```
-
-## 📜 License
-This project is licensed under the MIT License.
