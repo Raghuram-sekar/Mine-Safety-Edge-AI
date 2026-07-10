@@ -1,3 +1,63 @@
+# Mine-Safety-Edge-AI
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white) ![License](https://img.shields.io/badge/License-MIT-green.svg)
+
+## 📋 Table of Contents
+- [Project Overview](#-project-overview)
+- [What This Project Does](#-what-this-project-does)
+- [Key Innovation](#-key-innovation)
+- [Performance Highlights](#-performance-highlights)
+- [Architecture](#-architecture)
+- [Methodology & Technical Details](#-methodology--technical-details)
+- [Original Documentation & Setup Guide](#-original-documentation--setup-guide)
+
+
+---
+
+## 🎯 Project Overview
+Mine Safety Edge-AI System
+
+Sensor-Driven Edge Intelligence with Safety-Critical Decision Making
+
+📌 Project Overview
+
+This project implements a mine safety monitoring system that combines multi-sensor data acquisition, edge-based machine learning inference, and system-level simulation to detect hazardous conditions such as toxic gas exposure and wo... (Refer to the Original Documentation section below for full details).
+
+---
+
+## 🚀 What This Project Does
+This project implements a secure, high-efficiency data intelligence pipeline, enabling local processing, edge decisions, or automated agentic API workflows.
+
+---
+
+## 🔬 Key Innovation
+| Feature | Traditional Cloud IoT ❌ | ESP32 Edge AI ✅ | Benefit |
+|---------|--------------------------|------------------|---------|
+| **Classification** | Heavy cloud pipelines | **ESP32 deterministic neural net** | 0ms network classification latency |
+| **Footprint** | High megabyte RAM consumption | **Local <128KB static footprint** | Runs on ultra-low-power microcontrollers |
+| **Firmware** | Standard round-robin loops | **Event-driven interrupt priority** | Alerts take priority over raw telemetry |
+
+---
+
+## 📊 Performance Highlights
+- ✅ **Continuous fall classification** running locally.
+- ✅ **Event-driven firmware** securing priority packets.
+- ✅ **Simulated and verified** using MATLAB and Simulink models.
+
+---
+
+## 🏗️ Architecture
+```mermaid
+graph TD
+    IMU[IMU Sensor Accelerometer] -->|Interrupt| ESP[ESP32 Microcontroller]
+    ESP -->|Local Inference| FallClassifier[Edge Neural Network]
+    FallClassifier -->|Fall Detected| Alert[High-Priority Radio Alert Packet]
+    FallClassifier -->|No Fall| Telemetry[Low-Priority Telemetry Logging]
+```
+
+
+---
+
+## 📖 Original Documentation & Setup Guide
 Mine Safety Edge-AI System
 
 Sensor-Driven Edge Intelligence with Safety-Critical Decision Making
