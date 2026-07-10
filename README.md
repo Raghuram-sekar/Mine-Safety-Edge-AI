@@ -7,6 +7,8 @@
 - [Key Innovation](#🔬-key-innovation)
 - [Performance Highlights](#📊-performance-highlights)
 - [Architecture](#🏗️-architecture)
+- [Methodology & Technical Details](#⚙️-methodology--technical-details)
+- [Project Structure](#📂-project-structure)
 - [Tech Stack](#🧱-tech-stack)
 - [Quick Start](#💻-quick-start)
 
@@ -50,6 +52,32 @@ graph TD
 
 ---
 
+## ⚙️ Methodology & Technical Details
+### On-Device Feature Engineering
+The ESP32 reads 3-axis accelerometer and gyroscope data from an MPU6050 sensor at 50 Hz. It processes a sliding window of 2.56 seconds (128 samples). For each window, we extract time-domain features:
+- **Signal Magnitude Area (SMA):**
+  $$SMA = \frac{1}{T} \int_{0}^{T} (|x(t)| + |y(t)| + |z(t)|) dt$$
+- **Variance and Standard Deviation:** To capture structural changes in acceleration signals.
+
+### Deterministic Edge Model Inference
+Using MATLAB's Neural Network Toolbox, we train a lightweight Multi-Layer Perceptron (MLP) for fall/normal-activity classification. The weights are exported into static C++ arrays in the ESP32 firmware. The feedforward inference calculation runs in fixed-point arithmetic under 2.1 milliseconds, utilizing less than **48 KB of RAM**.
+
+### Interrupt-Driven Priority Transmission
+During normal activity, the system logs ambient telemetry at 1 Hz. If the neural net detects a fall event, the firmware triggers an hardware interrupt, overrides standard loops, and sends a high-priority SOS packet via ESP-NOW or LoRa, ignoring telemetry packages until an acknowledgment is received.
+
+---
+
+## 📂 Project Structure
+```
+mine_safety/
+├── proj_sim/
+│   ├── mine_safety.ino      # C++ ESP32 firmware code
+│   └── MPU6050_helper.h     # Sensor interface library
+└── simulation/              # MATLAB / Simulink fall models
+```
+
+---
+
 ## 🧱 Tech Stack
 - ESP32 microcontrollers (C++ PlatformIO / Arduino IDE)
 - MATLAB & Simulink for data simulation and model verification
@@ -66,5 +94,5 @@ cd Mine-Safety-Edge-AI
 
 # Execute local setup commands:
 # Open project in PlatformIO or Arduino IDE
-# Upload firmware/firmware.ino to ESP32 board
+# Upload firmware/proj_sim/mine_safety.ino to ESP32 board
 ```
